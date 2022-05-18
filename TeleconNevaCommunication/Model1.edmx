@@ -23,6 +23,7 @@
           <Property Name="Роль" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Номер" Type="int" Nullable="false" />
           <Property Name="Пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Фото" Type="image" />
         </EntityType>
         <EntityContainer Name="Хранилище TeleconNevaModelContainer">
           <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
@@ -35,7 +36,8 @@
 [Users].[Email] AS [Email], 
 [Users].[Роль] AS [Роль], 
 [Users].[Номер] AS [Номер], 
-[Users].[Пароль] AS [Пароль]
+[Users].[Пароль] AS [Пароль], 
+[Users].[Фото] AS [Фото]
 FROM [dbo].[Users] AS [Users]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -60,6 +62,7 @@ FROM [dbo].[Users] AS [Users]</DefiningQuery>
           <Property Name="Роль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Номер" Type="Int32" Nullable="false" />
           <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityContainer Name="TeleconNevaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -82,6 +85,7 @@ FROM [dbo].[Users] AS [Users]</DefiningQuery>
                 <ScalarProperty Name="Роль" ColumnName="Роль" />
                 <ScalarProperty Name="Номер" ColumnName="Номер" />
                 <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Фото" ColumnName="Фото" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

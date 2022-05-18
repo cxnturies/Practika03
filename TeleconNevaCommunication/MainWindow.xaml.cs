@@ -25,14 +25,30 @@ namespace TeleconNevaCommunication
             InitializeComponent();
             MainFrame.Navigate(new LoginPage());
             Manager.MainFrame = MainFrame;
+            //ShutdownTimer _timer = new ShutdownTimer();
+            //_timer.TimerCreationEvent += EndWarningTextbox_Сonstructor;
+            //if (System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties()
+            //    .GetActiveTcpListeners().Any(l => l.Port == 120))
+            //{
+            //    _timer.Run();
+            //}
         }
 
         public void EndWarningTextbox_Сonstructor()
         {
+            //EndWarningTextbox.Visibility = Visibility.Visible;
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
+            //if (Manager.MainFrame.CanGoBack)
+            //{
+            //    BtnBack.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    BtnBack.Visibility = Visibility.Hidden;
+            //}
         }
     }
 }

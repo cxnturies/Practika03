@@ -8,12 +8,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="160"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <Image Source="Resources/LogoTNS.jpg" HorizontalAlignment="Right"/>
-        <Frame Grid.Row="2" Name="MainFrame" ContentRendered="MainFrame_ContentRendered"/>
+        <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered"/>
         <TextBlock Text="Телеком Нева Связь" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,0,0,0"/>
     </Grid>
 </Window>

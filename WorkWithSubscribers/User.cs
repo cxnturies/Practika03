@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeleconNevaCommunication
+namespace WorkWithSubscribers
 {
     using System;
     using System.Collections.Generic;
