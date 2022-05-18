@@ -40,12 +40,10 @@ namespace TeleconNevaCommunication
                 }
                 else
                 {
-                    //ButtonVihod.Focus();
                     MessageBox.Show("Не верный номер пользователя");
                 }
             }
             PasTextBox.Focus();
-            e.Handled = true;
         }
 
         private void PasTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -72,7 +70,6 @@ namespace TeleconNevaCommunication
             }
 
             CodTextBox.Focus();
-            e.Handled = true;
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
@@ -114,13 +111,6 @@ namespace TeleconNevaCommunication
             NamTextBox.Clear();
             PasTextBox.Clear();
             CodTextBox.Clear();
-            //ProcessStartInfo Info = new ProcessStartInfo();
-            //Info.Arguments = "/C choice /C Y /N /D Y /T 1 & START \"\" \"" + System.Reflection.Assembly.GetEntryAssembly().Location + "\"";
-            //Info.WindowStyle = ProcessWindowStyle.Hidden;
-            //Info.CreateNoWindow = true;
-            //Info.FileName = "cmd.exe";
-            //Process.Start(Info);
-            //Process.GetCurrentProcess().Kill();
         }
 
         private void CodTextBox_KeyUp(object sender, KeyEventArgs e)

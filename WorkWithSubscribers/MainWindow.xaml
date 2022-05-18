@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkWithSubscribers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -29,7 +29,7 @@
             <TextBox x:Name="SupprtTextBox" Height="30"  Width="80" Margin="0,5" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap"  Text="Поддержка пользователей"  Background="LightGray" IsReadOnly="True"  FontSize="9" Cursor="Arrow" PreviewMouseDown="SupprtTextBox_MouseDown"/>
             <TextBox x:Name="crmTextBox" Height="20" Width="80" Margin="0,5" Text="CRM" Background="LightGray" IsReadOnly="True"  FontSize="10" TextAlignment="Center" Cursor="Arrow" PreviewMouseDown="crmTextBox_MouseDown"/>
 
-            <Button Content="проф." Grid.Row="1"  Height="41" Width="41" Margin="0,35,0,0">
+            <Button Content="проф." Grid.Row="1"  Height="42" Width="42" Margin="0,32,0,0">
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
                         <Grid>
@@ -41,7 +41,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Content="?" Grid.Row="1"  Height="41" Width="41" Margin="0,5,0,0">
+            <Button Content="?" Grid.Row="1"  Height="42" Width="42" Margin="0,5,0,0">
                 <Button.Template>
                     <ControlTemplate  TargetType="Button">
                         <Grid>
@@ -56,14 +56,14 @@
 
         
 
-        <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered"/>
+        <Frame Grid.Row="1" Grid.Column="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" Margin="10,0,0,0"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="1" Margin="5,0,0,0" Grid.RowSpan="2">
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Width="1" Background="Gray" Height="1000"/>
         </StackPanel>
 
         <TextBlock x:Name="HeaderTextBlock" Text="Абоненты ТНС" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Grid.Column="1" Grid.Row="0" FontWeight="Normal"/>
         
-        <Button Width="45" Height="45" Content="" Grid.Column="3" Margin="150,0,0,0">
+        <Button Width="45" Height="45" Content="ФОТО" Grid.Column="3" Margin="150,0,0,0">
             <Button.Template>
                 <ControlTemplate  TargetType="Button">
                     <Grid>
@@ -74,7 +74,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <ComboBox x:Name="UsersComboBox" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Width="140" SelectionChanged="UsersComboBox_SelectionChanged"/>
+        <ComboBox x:Name="UsersComboBox" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" Width="140" SelectionChanged="UsersComboBox_SelectionChanged" IsEditable="True" IsReadOnly="True" Cursor="Arrow" Text="Пользователи"/>
         <TextBlock Text="События" TextAlignment="Center" Margin="8,0,8,5" FontSize="20" Grid.Row="1" Grid.Column="2" Background="LightGray"/>
         <Separator Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Margin="8,35,8,0"/>
         <ScrollViewer Grid.Row="1" Grid.Column="2" Margin="0,45,8,0">

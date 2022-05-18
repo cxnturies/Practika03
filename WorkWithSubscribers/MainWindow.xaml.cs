@@ -40,32 +40,44 @@ namespace WorkWithSubscribers
 
         private void SubsTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "Абоненты";
+            HeaderTextBlock.Text = "Абоненты ТНС";
+            MainFrame.Navigate(new clrPage());
+            Manager.MainFrame = MainFrame;
         }
 
         private void EquipTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "Управление оборудованием";
+            HeaderTextBlock.Text = "Управление оборудованием ТНС";
+            MainFrame.Navigate(new NetworkOpinionManagement());
+            Manager.MainFrame = MainFrame;
         }
 
         private void AssetsTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "Активы";
+            HeaderTextBlock.Text = "Активы ТНС";
+            MainFrame.Navigate(new clrPage());
+            Manager.MainFrame = MainFrame;
         }
 
         private void BillingTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "Биллинг";
+            HeaderTextBlock.Text = "Биллинг ТНС";
+            MainFrame.Navigate(new clrPage());
+            Manager.MainFrame = MainFrame;
         }
 
         private void SupprtTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "Поддержка пользователей";
+            HeaderTextBlock.Text = "Поддержка пользователей ТНС";
+            MainFrame.Navigate(new clrPage());
+            Manager.MainFrame = MainFrame;
         }
 
         private void crmTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HeaderTextBlock.Text = "CRM";
+            HeaderTextBlock.Text = "CRM ТНС";
+            MainFrame.Navigate(new clrPage());
+            Manager.MainFrame = MainFrame;
         }
 
         private void UsersComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
