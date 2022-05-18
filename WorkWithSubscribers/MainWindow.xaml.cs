@@ -69,7 +69,7 @@ namespace WorkWithSubscribers
         private void SupprtTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Поддержка пользователей ТНС";
-            MainFrame.Navigate(new clrPage());
+            MainFrame.Navigate(new UserSupport());
             Manager.MainFrame = MainFrame;
         }
 

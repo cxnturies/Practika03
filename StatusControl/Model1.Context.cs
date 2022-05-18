@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkWithSubscribers
+namespace StatusControl
 {
     using System;
     using System.Data.Entity;
@@ -35,10 +35,7 @@ namespace WorkWithSubscribers
         }
     
         public DbSet<Highway> Highways { get; set; }
-        public DbSet<Sub> Subs { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Access_Networks> Access_Networks { get; set; }
-        public DbSet<Application> Applications { get; set; }
         public DbSet<Suds_Equipment> Suds_Equipment { get; set; }
     }
 }

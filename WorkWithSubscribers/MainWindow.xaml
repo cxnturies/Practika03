@@ -63,7 +63,7 @@
 
         <TextBlock x:Name="HeaderTextBlock" Text="Абоненты ТНС" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Grid.Column="1" Grid.Row="0" FontWeight="Normal"/>
         
-        <Button Width="45" Height="45" Content="ФОТО" Grid.Column="3" Margin="150,0,0,0">
+        <Button Width="45" Height="45" Content="" Grid.Column="3" Margin="150,0,0,0">
             <Button.Template>
                 <ControlTemplate  TargetType="Button">
                     <Grid>
