@@ -63,6 +63,19 @@
           <Property Name="F10" Type="nvarchar" MaxLength="255" />
           <Property Name="F11" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TeleconNeva.dbo.Payments" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="Номер абонента" />
+          </Key>
+          <Property Name="Дата платежа" Type="datetime" />
+          <Property Name="Сумма платежа" Type="float" />
+          <Property Name="Баланс абонента" Type="float" />
+          <Property Name="Дата баланса" Type="datetime" />
+          <Property Name="Задолженность" Type="float" />
+          <Property Name="Номер абонента" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="Subs">
           <Key>
             <PropertyRef Name="Номер абонента" />
@@ -92,6 +105,16 @@
           <Property Name="Серийный номер оборудования " Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TeleconNeva.dbo.SubsTariffs" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="SubsTariffs">
+          <Key>
+            <PropertyRef Name="ЛС абонента" />
+          </Key>
+          <Property Name="ЛС абонента" Type="float" Nullable="false" />
+          <Property Name="Тарифы абонента" Type="nvarchar" MaxLength="255" />
+          <Property Name="Обращение" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "TeleconNeva.dbo.Suds_Equipment" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Suds_Equipment">
           <Key>
@@ -103,6 +126,16 @@
           <Property Name="Стандарт передачи" Type="nvarchar" MaxLength="255" />
           <Property Name="Скорость" Type="nvarchar" MaxLength="255" />
           <Property Name="Адрес абонента" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -119,9 +152,21 @@
           <Property Name="Пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Фото" Type="image" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "TeleconNeva.dbo.Тарифы2$" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Тарифы2$">
+          <Key>
+            <PropertyRef Name="Услуга" />
+          </Key>
+          <Property Name="Услуга" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Название тарифа" Type="nvarchar" MaxLength="255" />
+          <Property Name="Условия" Type="nvarchar" MaxLength="255" />
+          <Property Name="Стоимость, руб/мес" Type="float" />
+        </EntityType>
         <EntityContainer Name="Хранилище TeleconNevaModelContainer">
           <EntitySet Name="Highway" EntityType="Self.Highway" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subs" EntityType="Self.Subs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Access_Networks" EntityType="Self.Access_Networks" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -159,6 +204,23 @@ FROM [dbo].[Access_Networks] AS [Access_Networks]</DefiningQuery>
 [Applications].[7 September] AS [7 September]
 FROM [dbo].[Applications] AS [Applications]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Payments" EntityType="Self.Payments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Payments].[Дата платежа] AS [Дата платежа], 
+[Payments].[Сумма платежа] AS [Сумма платежа], 
+[Payments].[Баланс абонента] AS [Баланс абонента], 
+[Payments].[Дата баланса] AS [Дата баланса], 
+[Payments].[Задолженность] AS [Задолженность], 
+[Payments].[Номер абонента] AS [Номер абонента]
+FROM [dbo].[Payments] AS [Payments]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SubsTariffs" EntityType="Self.SubsTariffs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SubsTariffs].[ЛС абонента] AS [ЛС абонента], 
+[SubsTariffs].[Тарифы абонента] AS [Тарифы абонента], 
+[SubsTariffs].[Обращение] AS [Обращение]
+FROM [dbo].[SubsTariffs] AS [SubsTariffs]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Suds_Equipment" EntityType="Self.Suds_Equipment" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [Suds_Equipment].[Серийный номер] AS [Серийный номер], 
@@ -168,6 +230,14 @@ FROM [dbo].[Applications] AS [Applications]</DefiningQuery>
 [Suds_Equipment].[Скорость] AS [Скорость], 
 [Suds_Equipment].[Адрес абонента] AS [Адрес абонента]
 FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Тарифы2$" EntityType="Self.Тарифы2$" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Тарифы2$].[Услуга] AS [Услуга], 
+[Тарифы2$].[Название тарифа] AS [Название тарифа], 
+[Тарифы2$].[Условия] AS [Условия], 
+[Тарифы2$].[Стоимость, руб/мес] AS [Стоимость, руб/мес]
+FROM [dbo].[Тарифы2$] AS [Тарифы2$]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema>
@@ -218,6 +288,16 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
           <Property Name="Дата_расторжения_договора" Type="DateTime" Precision="3" />
           <Property Name="F22" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Серийный_номер_оборудования_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -272,6 +352,25 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
           <Property Name="C6_September" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="C7_September" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Номер_абонента" />
+          </Key>
+          <Property Name="Дата_платежа" Type="DateTime" Precision="3" />
+          <Property Name="Сумма_платежа" Type="Double" />
+          <Property Name="Баланс_абонента" Type="Double" />
+          <Property Name="Дата_баланса" Type="DateTime" Precision="3" />
+          <Property Name="Задолженность" Type="Double" />
+          <Property Name="Номер_абонента" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubsTariff">
+          <Key>
+            <PropertyRef Name="ЛС_абонента" />
+          </Key>
+          <Property Name="ЛС_абонента" Type="Double" Nullable="false" />
+          <Property Name="Тарифы_абонента" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Обращение" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Suds_Equipment">
           <Key>
             <PropertyRef Name="Серийный_номер" />
@@ -283,13 +382,26 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
           <Property Name="Скорость" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Адрес_абонента" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Тарифы2_">
+          <Key>
+            <PropertyRef Name="Услуга" />
+          </Key>
+          <Property Name="Услуга" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Название_тарифа" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Условия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Стоимость__руб_мес" Type="Double" />
+        </EntityType>
         <EntityContainer Name="TeleconNevaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Highways" EntityType="Self.Highway" />
           <EntitySet Name="Subs" EntityType="Self.Sub" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Access_Networks" EntityType="Self.Access_Networks" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="SubsTariffs" EntityType="Self.SubsTariff" />
           <EntitySet Name="Suds_Equipment" EntityType="Self.Suds_Equipment" />
+          <EntitySet Name="Тарифы2_" EntityType="Self.Тарифы2_" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -340,6 +452,17 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
                 <ScalarProperty Name="Дата_расторжения_договора" ColumnName="Дата расторжения договора" />
                 <ScalarProperty Name="F22" ColumnName="F22" />
                 <ScalarProperty Name="Серийный_номер_оборудования_" ColumnName="Серийный номер оборудования " />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeleconNevaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -399,6 +522,27 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="TeleconNevaModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="Дата_платежа" ColumnName="Дата платежа" />
+                <ScalarProperty Name="Сумма_платежа" ColumnName="Сумма платежа" />
+                <ScalarProperty Name="Баланс_абонента" ColumnName="Баланс абонента" />
+                <ScalarProperty Name="Дата_баланса" ColumnName="Дата баланса" />
+                <ScalarProperty Name="Задолженность" ColumnName="Задолженность" />
+                <ScalarProperty Name="Номер_абонента" ColumnName="Номер абонента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubsTariffs">
+            <EntityTypeMapping TypeName="TeleconNevaModel.SubsTariff">
+              <MappingFragment StoreEntitySet="SubsTariffs">
+                <ScalarProperty Name="ЛС_абонента" ColumnName="ЛС абонента" />
+                <ScalarProperty Name="Тарифы_абонента" ColumnName="Тарифы абонента" />
+                <ScalarProperty Name="Обращение" ColumnName="Обращение" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Suds_Equipment">
             <EntityTypeMapping TypeName="TeleconNevaModel.Suds_Equipment">
               <MappingFragment StoreEntitySet="Suds_Equipment">
@@ -408,6 +552,16 @@ FROM [dbo].[Suds_Equipment] AS [Suds_Equipment]</DefiningQuery>
                 <ScalarProperty Name="Стандарт_передачи" ColumnName="Стандарт передачи" />
                 <ScalarProperty Name="Скорость" ColumnName="Скорость" />
                 <ScalarProperty Name="Адрес_абонента" ColumnName="Адрес абонента" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тарифы2_">
+            <EntityTypeMapping TypeName="TeleconNevaModel.Тарифы2_">
+              <MappingFragment StoreEntitySet="Тарифы2$">
+                <ScalarProperty Name="Услуга" ColumnName="Услуга" />
+                <ScalarProperty Name="Название_тарифа" ColumnName="Название тарифа" />
+                <ScalarProperty Name="Условия" ColumnName="Условия" />
+                <ScalarProperty Name="Стоимость__руб_мес" ColumnName="Стоимость, руб/мес" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

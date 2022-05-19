@@ -44,7 +44,6 @@ namespace TeleconNevaCommunication
                     MessageBox.Show("Не верный номер пользователя");
                 }
             }
-            PasTextBox.Focus();
             e.Handled = true;
         }
 
@@ -71,7 +70,6 @@ namespace TeleconNevaCommunication
                 MessageBox.Show("Не верный номер пользователя");
             }
 
-            CodTextBox.Focus();
             e.Handled = true;
         }
 

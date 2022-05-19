@@ -15,14 +15,13 @@ namespace WorkWithSubscribers
     
     public partial class TeleconNevaEntities : DbContext
     {
-        static public TeleconNevaEntities _context;
-
+        public static TeleconNevaEntities _context;
         public TeleconNevaEntities()
             : base("name=TeleconNevaEntities")
         {
         }
 
-        static public TeleconNevaEntities GetContext()
+        public static TeleconNevaEntities GetContext()
         {
             if (_context == null)
                 _context = new TeleconNevaEntities();
@@ -36,9 +35,13 @@ namespace WorkWithSubscribers
     
         public DbSet<Highway> Highways { get; set; }
         public DbSet<Sub> Subs { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Access_Networks> Access_Networks { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<SubsTariff> SubsTariffs { get; set; }
         public DbSet<Suds_Equipment> Suds_Equipment { get; set; }
+        public DbSet<Тарифы2_> Тарифы2_ { get; set; }
     }
 }

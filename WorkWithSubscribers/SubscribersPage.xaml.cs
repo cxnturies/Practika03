@@ -13,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeleconNevaCommunication
+namespace WorkWithSubscribers
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SubscribersPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SubscribersPage : Page
     {
-        public MainWindow()
+        public SubscribersPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage());
-            Manager.MainFrame = MainFrame;
-        }
-
-        public void EndWarningTextbox_Сonstructor()
-        {
-        }
-
-        private void MainFrame_ContentRendered(object sender, EventArgs e)
-        {
         }
     }
 }

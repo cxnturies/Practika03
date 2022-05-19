@@ -13,26 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeleconNevaCommunication
+namespace WorkWithSubscribers
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Billing.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Billing : Page
     {
-        public MainWindow()
+        public Billing()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage());
-            Manager.MainFrame = MainFrame;
+            DGridTariff.ItemsSource = TeleconNevaEntities.GetContext().Тарифы2_.ToList();
+            DGridPayment.ItemsSource = TeleconNevaEntities.GetContext().Payments.ToList();
         }
 
-        public void EndWarningTextbox_Сonstructor()
+        private void Otchet_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void MainFrame_ContentRendered(object sender, EventArgs e)
-        {
+            MessageBox.Show("Отчет свормирован");
         }
     }
 }

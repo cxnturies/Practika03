@@ -69,6 +69,9 @@
     <Compile Include="Application.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Billing.xaml.cs">
+      <DependentUpon>Billing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="clrPage.xaml.cs">
       <DependentUpon>clrPage.xaml</DependentUpon>
     </Compile>
@@ -94,10 +97,22 @@
     <Compile Include="NetworkOpinionManagement.xaml.cs">
       <DependentUpon>NetworkOpinionManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sub.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubscribersPage.xaml.cs">
+      <DependentUpon>SubscribersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubsTariff.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Suds_Equipment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -106,6 +121,13 @@
     <Compile Include="UserSupport.xaml.cs">
       <DependentUpon>UserSupport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Тарифы2_.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Page Include="Billing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="clrPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +145,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NetworkOpinionManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubscribersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

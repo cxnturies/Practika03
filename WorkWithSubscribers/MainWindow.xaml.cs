@@ -31,6 +31,12 @@ namespace WorkWithSubscribers
                 }
 
             }
+            SubsTextBox.Visibility = Visibility.Collapsed;
+            EquipTextBox.Visibility = Visibility.Collapsed;
+            AssetsTextBox.Visibility = Visibility.Collapsed;
+            BillingTextBox.Visibility = Visibility.Collapsed;
+            SupprtTextBox.Visibility = Visibility.Collapsed;
+            crmTextBox.Visibility = Visibility.Collapsed;
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)
@@ -41,47 +47,42 @@ namespace WorkWithSubscribers
         private void SubsTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Абоненты ТНС";
-            MainFrame.Navigate(new clrPage());
-            Manager.MainFrame = MainFrame;
+            MainFrame.Navigate(new SubscribersPage());
         }
 
         private void EquipTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Управление оборудованием ТНС";
             MainFrame.Navigate(new NetworkOpinionManagement());
-            Manager.MainFrame = MainFrame;
         }
 
         private void AssetsTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Активы ТНС";
             MainFrame.Navigate(new clrPage());
-            Manager.MainFrame = MainFrame;
         }
 
         private void BillingTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Биллинг ТНС";
-            MainFrame.Navigate(new clrPage());
-            Manager.MainFrame = MainFrame;
+            MainFrame.Navigate(new Billing());
         }
 
         private void SupprtTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "Поддержка пользователей ТНС";
             MainFrame.Navigate(new UserSupport());
-            Manager.MainFrame = MainFrame;
         }
 
         private void crmTextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
             HeaderTextBlock.Text = "CRM ТНС";
             MainFrame.Navigate(new clrPage());
-            Manager.MainFrame = MainFrame;
         }
 
         private void UsersComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MainFrame.Navigate(new SubscribersPage());
             switch (userList[UsersComboBox.SelectedIndex].Роль)
             {
                 case "Руководитель отдела по работе с клиентами":
